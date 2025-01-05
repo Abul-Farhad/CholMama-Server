@@ -12,7 +12,6 @@ class TokenAuthenticationMiddleware:
 
         # Get token from Authorization header
         token = request.headers.get('Authorization')
-
         if not token:
             return JsonResponse({"error": "Authorization token is required"}, status=401)
 

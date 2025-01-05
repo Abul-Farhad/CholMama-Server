@@ -1,0 +1,33 @@
+# Virtual environment
+env/
+
+# Python bytecode files
+*.pyc
+__pycache__/
+
+# Logs
+*.log
+
+# Django secret settings or environment files
+*.env
+
+# Database (PostgreSQL dumps, backups, etc.)
+*.sql
+*.dump
+
+# Media uploads (if any)
+media/
+
+# Static files (optional, if generated dynamically)
+staticfiles/
+
+# Django migrations (optional, if you don't want to include migrations)
+auth_app/migrations/
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db

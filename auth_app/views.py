@@ -80,15 +80,15 @@ def login_user(request):
             # Authenticate user
             user = authenticate(request, email=email, password=password)
             if user:
-                # if not user.is_active:
-                #     return JsonResponse({"error": "This account is inactive"}, status=403)
+                if not user.is_active:
+                    return JsonResponse({"error": "This account is inactive"}, status=403)
 
                 # Generate a new token
                 new_token = str(uuid.uuid4())
                 user.token = new_token
                 user.save()
 
-                return JsonResponse({"token": new_token, "message": "Login successful"}, status=200)
+                return JsonResponse({"token": new_token, "message": "Login successful", "userid": user.id}, status=200)
             else:
                 return JsonResponse({"error": "Invalid credentials"}, status=401)
 
@@ -96,6 +96,8 @@ def login_user(request):
             return JsonResponse({"error": "An unexpected error occurred", "details": str(e)}, status=500)
 
     return JsonResponse({"error": "Invalid request method"}, status=405)
+
+
 
 
 
